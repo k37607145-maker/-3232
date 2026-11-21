@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONE PUNCH MAN | Anime World</title>
+
+<!-- Два шрифта Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ПАЛИТРА COOLORS */
+:root {
+    --navy: #0B132B;
+    --dark-blue: #1C2541;
+    --slate: #3A506B;
+    --turquoise: #5BC0BE;
+    --red: #F25F5C;
+
+    --background: var(--navy);
+    --surface: var(--dark-blue);
+    --surface-light: var(--slate);
+    --text: #FFFFFF;
+    --muted: #C5CEDB;
+    --accent: var(--red);
+    --border: var(--slate);
+}
+
+/* СВЕТЛАЯ ТЕМА */
+body.light {
+    --background: #F0F4F8;
+    --surface: #FFFFFF;
+    --surface-light: #DCE8EF;
+    --text: #152238;
+    --muted: #526477;
+    --border: #C3D2DD;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Oswald', sans-serif;
+}
+
+/* ШАПКА */
+header {
+    background: var(--surface);
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 3px solid var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--turquoise);
+}
+
+.theme-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ГЛАВНЫЙ ЭКРАН */
+.hero-main {
+    min-height: 600px;
+    padding: 60px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background: linear-gradient(120deg, var(--background), var(--surface-light));
+}
+
+.info {
+    max-width: 550px;
+}
+
+.info h1 {
+    font-size: clamp(45px, 7vw, 80px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.info h1 span {
+    color: var(--accent);
+}
+
+.info p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 25px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    background: var(--turquoise);
+    color: var(--navy);
+}
+
+.main-images {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex: 1;
+}
+
+.main-images img {
+    width: 45%;
+    height: 350px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px #F25F5C55);
+    animation: floating 4s infinite ease-in-out;
+}
+
+.main-images img:nth-child(2) {
+    animation-delay: 1s;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* СЕКЦИИ */
+section {
+    padding: 75px 7%;
+}
+
+.title {
+    text-align: center;
+    font-size: 42px;
+    color: var(--accent);
+    margin-bottom: 40px;
+}
+
+/* КАРТОЧКИ ГЕРОЕВ */
+.characters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px #F25F5C44;
+}
+
+.card img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    background: var(--surface-light);
+    padding: 10px;
+}
+
+.card h2 {
+    color: var(--accent);
+    font-size: 26px;
+    margin: 15px 0 8px;
+    font-weight: 700;
+}
+
+.card p {
+    color: var(--muted);
+    padding: 0 15px 20px;
+    line-height: 1.7;
+}
+
+.rank {
+    display: inline-block;
+    background: var(--slate);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin: 8px 0 12px;
+    font-size: 13px;
+}
+
+/* ПОИСК */
+.search-box {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 25px;
+    padding: 15px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box:focus {
+    border-color: var(--turquoise);
+}
+
+/* ФИЛЬТРЫ */
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.filter-btn {
+    padding: 12px 20px;
+    border: 2px solid var(--border);
+    border-radius: 25px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.no-results {
+    text-align: center;
+    color: var(--muted);
+    padding: 25px;
+    display: none;
+}
+
+/* ОБ АНИМЕ */
+.about {
+    background: var(--surface);
+    text-align: center;
+}
+
+.about p {
+    max-width: 800px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* ГАРО */
+.garou-section {
+    background: linear-gradient(135deg, var(--background), var(--surface));
+}
+
+.garou-card {
+    background: var(--surface);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.garou-card:hover {
+    border-color: var(--turquoise);
+    transform: translateY(-4px);
+}
+
+.garou-card h2 {
+    color: var(--turquoise);
+    margin-bottom: 15px;
+    font-size: 27px;
+}
+
+.garou-card img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    background: var(--background);
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.garou-card p,
+.garou-card li {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.garou-card ul {
+    padding-left: 25px;
+}
+
+/* КНОПКА ОТВЕТА */
+.answer {
+    text-align: center;
+}
+
+.answer button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.answer button:hover {
+    background: var(--turquoise);
+    color: var(--navy);
+}
+
+#answer {
+    color: var(--accent);
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ПОДВАЛ */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--surface);
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* КНОПКА НАВЕРХ */
+.top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+    z-index: 90;
+}
+
+.top-btn.show {
+    display: block;
+}
+
+/* АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ */
+@media (max-width: 750px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero-main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-images img {
+        height: 250px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+}
+
+@media (max-width: 400px) {
+    .main-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-images img {
+        width: 80%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        ONE <span>PUNCH</span> MAN
+    </div>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#heroes">Герои</a>
+        <a href="#about">Об аниме</a>
+        <a href="#garou">Космический Гаро</a>
+    </nav>
+
+    <button class="theme-btn" onclick="toggleTheme()">
+        🌙 Тема
+    </button>
+</header>
+
+<main>
+
+<!-- ГЛАВНАЯ -->
+<div class="hero-main" id="home">
+
+    <div class="info">
+        <h1>ONE PUNCH <span>MAN</span></h1>
+
+        <p>
+            Добро пожаловать в мир One Punch Man!
+            Здесь монстры угрожают человечеству,
+            а герои сражаются за спасение мира.
+            Познакомься с самыми сильными персонажами!
+        </p>
+
+        <a href="#heroes" class="btn">
+            ПОЗНАКОМИТЬСЯ С ГЕРОЯМИ
+        </a>
+    </div>
+
+    <div class="main-images">
+        <img
+            src="https://onepunchman.fandom.com/wiki/Special:FilePath/Saitama_Anime.png"
+            alt="Сайтама"
+            onerror="this.style.display='none'">
+
+        <img
+            src="https://onepunchman.fandom.com/wiki/Special:FilePath/Genos_Anime.png"
+            alt="Генос"
+            onerror="this.style.display='none'">
+    </div>
+
+</div>
+
+<!-- ГЕРОИ -->
+<section id="heroes">
+
+    <h1 class="title">ГЛАВНЫЕ ГЕРОИ</h1>
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="🔍 Найти героя..."
+        oninput="filterHeroes()">
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="setFilter('all', this)">
+            Все
+        </button>
+
+        <button class="filter-btn" onclick="setFilter('s', this)">
+            S-класс
+        </button>
+
+        <button class="filter-btn" onclick="setFilter('other', this)">
+            Другие
+        </button>
+    </div>
+
+    <div class="characters" id="characterList">
+
+        <div class="card" data-category="other">
+            <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Saitama_Anime.png"
+                 alt="Сайтама" onerror="this.style.display='none'">
+            <h2>САЙТАМА</h2>
+            <span class="rank">B-класс №7</span>
+            <p>
+                Самый сильный герой.
+                Способен победить практически любого
+                противника одним ударом.
+            </p>
+        </div>
+
+        <div class="card" data-category="s">
+            <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Genos_Anime.png"
+                 alt="Генос" onerror="this.style.display='none'">
+            <h2>ГЕНОС</h2>
+            <span class="rank">S-класс №14</span>
+            <p>
+                Мощный киборг и ученик Сайтамы.
+                Постоянно улучшает свои способности.
+            </p>
+        </div>
+
+        <div class="card" data-category="s">
+            <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Tatsumaki_Anime_Character_Design.png"
+                 alt="Тацумаки" onerror="this.style.display='none'">
+            <h2>ТАЦУМАКИ</h2>
+            <span class="rank">S-класс №2</span>
+            <p>
+                Ужасной Торнадо.
+                Обладает невероятной психической силой.
+            </p>
+        </div>
+
+        <div class="card" data-category="other">
+            <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Fubuki_Anime_Profile.png"
+                 alt="Фубуки" onerror="this.style.display='none'">
+            <h2>ФУБУКИ</h2>
+            <span class="rank">B-класс №1</span>
+            <p>
+                Адская метель.
+                Младшая сестра Тацумаки
+                и лидер своей группы.
+            </p>
+        </div>
+
+        <div class="card" data-category="s">
+            <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Bang_Anime_Profile.png"
+                 alt="Бэнг" onerror="this.style.display='none'">
+            <h2>БЭНГ</h2>
+            <span class="rank">S-класс №3</span>
+            <p>
+                Серебряный Клык.
+                Великий мастер боевых искусств
+                и учитель Гаро.
+            </p>
+        </div>
+
+        <div class="card" data-category="other">
+            <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Bomb_Anime_Profile.png"
+                 alt="Бомб" onerror="this.style.display='none'">
+            <h2>БОМБ</h2>
+            <span class="rank">Мастер боевых искусств</span>
+            <p>
+                Старший брат Бэнга.
+                Мастер мощной боевой техники.
+            </p>
+        </div>
+
+        <div class="card" data-category="s">
+            <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Blast_full_body.png"
+                 alt="Бласт" onerror="this.style.display='none'">
+            <h2>БЛАСТ</h2>
+            <span class="rank">S-класс №1</span>
+            <p>
+                Герой номер один.
+                Обладает загадочными способностями
+                и может создавать порталы.
+            </p>
+        </div>
+
+    </div>
+
+    <p class="no-results" id="noResults">
+        Герои не найдены!
+    </p>
+
+</section>
+
+<!-- ОБ АНИМЕ -->
+<section class="about" id="about">
+
+    <h1 class="title">ОБ АНИМЕ</h1>
+
+    <p>
+        One Punch Man — история о герое по имени Сайтама,
+        который настолько силён, что может победить
+        практически любого врага одним ударом.
+        Вместе с Геносом он встречает опасных монстров,
+        сильных противников и других героев.
+        Аниме сочетает экшен, юмор и невероятные сражения!
+    </p>
+
+</section>
+
+<!-- КОСМИЧЕСКИЙ ГАРО -->
+<section class="garou-section" id="garou">
+
+    <h1 class="title">КОСМИЧЕСКИЙ ГАРО</h1>
+
+    <div class="garou-card">
+        <h2>Cosmic Fear Mode</h2>
+
+        <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Garou_Cosmic_Fear_Mode.png"
+             alt="Космический Гаро" onerror="this.style.display='none'">
+
+        <p>
+            Гаро получает невероятную силу от Бога
+            и превращается в Космического Гаро —
+            существо, способное использовать
+            разрушительную энергию Вселенной.
+        </p>
+    </div>
+
+    <div class="garou-card">
+        <h2>1. Сделка с Богом</h2>
+
+        <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/God_manga.png"
+             alt="Бог" onerror="this.style.display='none'">
+
+        <p>
+            Загадочная сущность по имени Бог предлагает
+            Гаро огромную силу. Гаро принимает её
+            и получает знания о космических силах.
+        </p>
+    </div>
+
+    <div class="garou-card">
+        <h2>2. Превращение в Космического Гаро</h2>
+
+        <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Cosmic_Fear_Mode_Garou.png"
+             alt="Космическая форма Гаро" onerror="this.style.display='none'">
+
+        <p>
+            Его тело покрывается узорами, напоминающими
+            звёздное небо. Он начинает излучать опасную
+            радиацию и получает возможность копировать
+            движения и способности противников.
+        </p>
+    </div>
+
+    <div class="garou-card">
+        <h2>3. Битва с Сайтамой</h2>
+
+        <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Saitama_manga.png"
+             alt="Сайтама" onerror="this.style.display='none'">
+
+        <p>
+            Гаро вступает в бой с Сайтамой.
+            Он копирует его техники, но Сайтама
+            продолжает становиться сильнее.
+        </p>
+    </div>
+
+    <div class="garou-card">
+        <h2>4. Способности Гаро</h2>
+
+        <ul>
+            <li>Космическое копирование.</li>
+            <li>Ядерные удары.</li>
+            <li>Гамма-всплеск.</li>
+            <li>Использование космической энергии.</li>
+        </ul>
+    </div>
+
+    <div class="garou-card">
+        <h2>5. Чем закончилась битва?</h2>
+
+        <img src="https://onepunchman.fandom.com/wiki/Special:FilePath/Saitama_vs_Garou.png"
+             alt="Сайтама против Гаро" onerror="this.style.display='none'">
+
+        <p>
+            Сайтама становится настолько сильным,
+            что Гаро не может за ним угнаться.
+            Позже Гаро показывает ему технику
+            путешествия во времени.
+        </p>
+    </div>
+
+    <div class="garou-card answer">
+        <h2>КТО СИЛЬНЕЕ?</h2>
+        <p>Космический Гаро или Сайтама?</p>
+
+        <button onclick="showAnswer()">
+            УЗНАТЬ ОТВЕТ
+        </button>
+
+        <h2 id="answer" class="hidden">
+            САЙТАМА ПОБЕЖДАЕТ! 👊
+        </h2>
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    ONE PUNCH MAN FAN WEBSITE © 2026
+    <p>Фанатский сайт, неофициальный проект</p>
+</footer>
+
+<button class="top-btn" id="topBtn"
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    ↑
+</button>
+
+<script>
+/* ПЕРЕКЛЮЧЕНИЕ ТЕМЫ */
+function toggleTheme() {
+    document.body.classList.toggle("light");
+
+    const button = document.querySelector(".theme-btn");
+
+    if (document.body.classList.contains("light")) {
+        button.textContent = "☀️ Тема";
+    } else {
+        button.textContent = "🌙 Тема";
+    }
+}
+
+/* ФИЛЬТР ГЕРОЕВ */
+let currentFilter = "all";
+
+function setFilter(category, button) {
+    currentFilter = category;
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    filterHeroes();
+}
+
+/* ПОИСК И ФИЛЬТРАЦИЯ */
+function filterHeroes() {
+    const search = document
+        .getElementById("search")
+        .value.toLowerCase()
+        .trim();
+
+    const cards = document.querySelectorAll(".card");
+    let visible = 0;
+
+    cards.forEach(card => {
+        const name = card.querySelector("h2")
+            .textContent.toLowerCase();
+
+        const category = card.dataset.category;
+
+        const matchesSearch = name.includes(search);
+
+        const matchesFilter =
+            currentFilter === "all" ||
+            category === currentFilter;
+
+        if (matchesSearch && matchesFilter) {
+            card.style.display = "";
+            visible++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("noResults").style.display =
+        visible === 0 ? "block" : "none";
+}
+
+/* ПОКАЗАТЬ ОТВЕТ */
+function showAnswer() {
+    document.getElementById("answer")
+        .classList.toggle("hidden");
+}
+
+/* КНОПКА НАВЕРХ */
+window.addEventListener("scroll", function() {
+    const button = document.getElementById("topBtn");
+
+    if (window.scrollY > 400) {
+        button.classList.add("show");
+    } else {
+        button.classList.remove("show");
+    }
+});
+</script>
+
+</body>
+</html>
